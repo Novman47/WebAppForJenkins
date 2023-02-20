@@ -36,7 +36,7 @@ pipeline {
                    "files": [
                       {
                       "pattern": "*.war",
-                      "target": "http://3.80.141.73:8081/artifactory/my_repo"
+                      "target": "http://3.80.141.73:8081/artifactory/libs-snapshot-local"
                       }
                             ]
                            }''',
