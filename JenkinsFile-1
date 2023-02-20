@@ -1,10 +1,10 @@
 pipeline {
-    agent any  // Added a space after "any" for consistency
+    agent any
     
     stages {
         stage('Git CheckOut') {
             steps {
-                checkout scmGit(  // Indented the arguments for readability
+                checkout scmGit(
                     branches: [[name: '*/main']],
                     extensions: [],
                     userRemoteConfigs: [[url: 'https://github.com/Novman47/WebAppForJenkins.git']]
@@ -26,8 +26,8 @@ pipeline {
         
         stage('Artifact upload') {
             steps {      
-                tUpload (
-    serverId: 'my_jfrog-sever',
+                rtUpload (
+                    serverId: 'my_jfrog-sever',
                     spec: '''{
                         "files": [
                             {
