@@ -1,38 +1,43 @@
-
 pipeline {
-    agent any
-	
-	stages {
-	    stage('Git CheckOut') {
-		    steps {
-			   checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Novman47/WebAppForJenkins.git']])
-			}
-		}
+    agent any  // Added a space after "any" for consistency
+    
+    stages {
+        stage('Git CheckOut') {
+            steps {
+                checkout scmGit(  // Indented the arguments for readability
+                    branches: [[name: '*/main']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/Novman47/WebAppForJenkins.git']]
+                )
+            }
+        }
+        
         stage('Clean and Install') {
             steps {
                 sh 'mvn clean install'
             }
         }
-        stage ('Package'){
+        
+        stage('Package') {
             steps {
                 sh 'mvn package'
-             }
+            }
         }
-  	stages {
-	    stage('Artifact upload') {
-		    steps {      
-               rtDownload (
-                          serverId: 'my_jfrog-sever',
-                          spec: '''{
-                          "files": [
-                      {
-                          "pattern": "*.war",
-                          "target": "libs-snapshot-local/"
-                     }  
-                   ]
-                 }''',
- 
-    
-)
+        
+        stage('Artifact upload') {
+            steps {      
+                tUpload (
+    serverId: 'my_jfrog-sever',
+                    spec: '''{
+                        "files": [
+                            {
+                                "pattern": "*.war",
+                                "target": "libs-snapshot-local/"
+                            }
+                        ]
+                    }''',
+                )
+            }
+        }
     }
 }
