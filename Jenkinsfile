@@ -21,7 +21,7 @@ pipeline {
             steps {
                rtServer (
                  id: "my_jfrog-sever",
-                 url: 'http://3.80.141.73:8081/artifactory/my_repo/',
+                 url: 'http://3.80.141.73:8081/artifactory/',
                  credentialsId: 'default-deployer',
                  bypassProxy: true,
                  timeout: 300
