@@ -21,9 +21,8 @@ pipeline {
             steps {
                rtServer (
                  id: "my_jfrog-sever",
-                 url: 'http://172.31.18.40:8081/artifactory',
-                 username: 'admin',
-                 password: 'novman47!',
+                 url: 'http://3.80.141.73:8081/artifactory/my_repo',
+                 credentialsId: 'default-deployer',
                  bypassProxy: true,
                  timeout: 300
                )
@@ -37,7 +36,7 @@ pipeline {
                    "files": [
                       {
                       "pattern": "*.war",
-                      "target": "http://172.31.18.40:8081/artifactory/libs-snapshot-local"
+                      "target": "http://3.80.141.73:8081/artifactory/my_repo"
                       }
                             ]
                            }''',
