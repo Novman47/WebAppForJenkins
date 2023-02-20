@@ -22,7 +22,8 @@ pipeline {
                rtServer (
                  id: "my_jfrog-sever",
                  url: 'http://172.31.18.40:8081/artifactory',
-                 credentialsId: 'default-deployer',
+                 username: 'admin',
+                 password: 'novman47!',
                  bypassProxy: true,
                  timeout: 300
                )
