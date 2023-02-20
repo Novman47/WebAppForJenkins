@@ -36,7 +36,7 @@ pipeline {
                    "files": [
                       {
                       "pattern": "*.war",
-                      "target": "my_repo/"
+                      "target": "libs-snapshot-local/"
                       }
                             ]
                            }''',
